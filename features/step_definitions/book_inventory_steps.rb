@@ -1,9 +1,14 @@
 Given("I am a registered user") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @registered_user = FactoryBot.create(:user, email: "tester@testdomain.test", password: "pa$$word")
 end
 
 Given("I am logged in") do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit root_path
+
+  fill_in "user_email", with: "tester@testdomain.test"
+  fill_in "user_password", with: "pa$$word"
+
+  click_button "Log in"
 end
 
 Given("I have populated my inventory with several books") do
@@ -20,7 +25,7 @@ Given("I have populated my inventory with several books") do
 end
 
 When("I visit the homepage") do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit root_path
 end
 
 Then("I should see the list of my books") do
